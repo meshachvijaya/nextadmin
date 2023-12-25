@@ -12,6 +12,7 @@ const Transactions = () => {
             <td>Status</td>
             <td>Date</td>
             <td>Amount</td>
+            <td>Marketplace</td>
           </tr>
         </thead>
         <tbody>
@@ -50,7 +51,7 @@ const Transactions = () => {
               </div>
             </td>
             <td>
-              <span className={`${styles.status} ${styles.done}`}>Pending</span>
+              <span className={`${styles.status} ${styles.done}`}>Done</span>
             </td>
             <td>14.02.2024</td>
             <td>Rp. 500.000</td>
@@ -70,11 +71,12 @@ const Transactions = () => {
             </td>
             <td>
               <span className={`${styles.status} ${styles.cancelled}`}>
-                Pending
+                Cancelled
               </span>
             </td>
             <td>14.02.2024</td>
             <td>Rp. 500.000</td>
+            <td>Tokopedia</td>
           </tr>
         </tbody>
       </table>
