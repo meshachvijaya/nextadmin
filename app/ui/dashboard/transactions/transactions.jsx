@@ -12,7 +12,6 @@ const Transactions = () => {
             <td>Status</td>
             <td>Date</td>
             <td>Amount</td>
-            <td>Marketplace</td>
           </tr>
         </thead>
         <tbody>
@@ -76,7 +75,6 @@ const Transactions = () => {
             </td>
             <td>14.02.2024</td>
             <td>Rp. 500.000</td>
-            <td>Tokopedia</td>
           </tr>
         </tbody>
       </table>
