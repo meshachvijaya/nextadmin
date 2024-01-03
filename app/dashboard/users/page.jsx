@@ -34,22 +34,22 @@ const UsersPage = async () => {
               <td>
                 <div className={styles.user}>
                   <Image
-                    src="/noavatar.png"
+                    src={user.img || "/noavatar.png"}
                     alt=""
                     width={40}
                     height={40}
                     className={styles.userImage}
                   />
-                  John Doe
+                  {user.username}
                 </div>
               </td>
-              <td>john@gmail.com</td>
-              <td>12 Dec 2023</td>
-              <td>Admin</td>
-              <td>Active</td>
+              <td>{user.email}</td>
+              <td>{user.createdAt?.toString().slice(4,16)}</td>
+              <td>{user.isAdmin ? "Admin" : "Client"}</td>
+              <td>{user.isActive ? "Active" : "Passive"}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href="/dashboard/users/test">
+                  <Link href={`/dashboard/users/${user.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
