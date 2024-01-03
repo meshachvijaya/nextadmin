@@ -12,13 +12,17 @@ const Search = ({ placeholder }) => {
   const handleSearch = (e) => {
     const params = new URLSearchParams(searchParams);
 
-    params.set("q", e.target.value);
+    if (e.target.value) {
+      params.set("q", e.target.value);
+    } else {
+      params.delete("q");
+    }
 
     replace(`${pathName}?${params}`);
   };
 
-  console.log(searchParams);
-  console.log(pathName);
+  // console.log(searchParams);
+  // console.log(pathName);
   return (
     <div className={styles.container}>
       <MdSearch />

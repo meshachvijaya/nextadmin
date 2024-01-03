@@ -5,10 +5,12 @@ import styles from "@/app/ui/dashboard/users/users.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const UsersPage = async () => {
-  const users = await fetchUsers();
+const UsersPage = async ({ searchParams }) => {
+  const q = searchParams?.q || "";
 
-  console.log(users);
+  const users = await fetchUsers(q);
+
+  // console.log(users);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -44,7 +46,7 @@ const UsersPage = async () => {
                 </div>
               </td>
               <td>{user.email}</td>
-              <td>{user.createdAt?.toString().slice(4,16)}</td>
+              <td>{user.createdAt?.toString().slice(4, 16)}</td>
               <td>{user.isAdmin ? "Admin" : "Client"}</td>
               <td>{user.isActive ? "Active" : "Passive"}</td>
               <td>
