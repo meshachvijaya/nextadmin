@@ -3,10 +3,9 @@ import Link from "next/link";
 import styles from "@/app/ui/dashboard/products/products.module.css";
 import Search from "@/app/ui/dashboard/search/search";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
-import { useSearchParams } from "next/navigation";
 import { fetchProducts } from "@/app/lib/data";
 
-const ProductsPage = async () => {
+const ProductsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
 
@@ -48,7 +47,7 @@ const ProductsPage = async () => {
               </td>
               <td>{product.description}</td>
               <td>Rp. {product.price}</td>
-              <td>{product.createdAt.toString().slice(4, 16)}</td>
+              <td>{product.createdAt?.toString().slice(4, 16)}</td>
               <td>{product.stock}</td>
               <td>
                 <div className={styles.buttons}>
@@ -66,7 +65,7 @@ const ProductsPage = async () => {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 };
