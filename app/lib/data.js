@@ -9,7 +9,7 @@ export const fetchUsers = async (q, page) => {
 
   try {
     connectToDB();
-    const users = await User.find({ username: { $regex: regex } }).limit(ITEM_PER_PAGE);
+    const users = await User.find({ username: { $regex: regex } }).limit(ITEM_PER_PAGE).skip(ITEM_PER_PAGE * (page-1));
     return users;
   } catch (err) {
     console.log(err);
