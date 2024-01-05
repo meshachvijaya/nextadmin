@@ -5,15 +5,15 @@ const AddUser = () => {
   return (
     <div className={styles.container}>
       <form action={addUser} className={styles.form}>
-        <input type="text" placeholder="Username" name="Username" required />
-        <input type="email" placeholder="Email" name="Email" required />
+        <input type="text" placeholder="Username" name="username" required />
+        <input type="email" placeholder="Email" name="email" required />
         <input
           type="password"
           placeholder="Password"
-          name="Password"
+          name="password"
           required
         />
-        <input type="phone" placeholder="Phone" name="Phone" />
+        <input type="phone" placeholder="Phone" name="phone" />
         <select name="isAdmin" id="isAdmin">
           <option value={false}>
             Is Admin?
@@ -30,12 +30,12 @@ const AddUser = () => {
         </select>
 
         <textarea
-          name="Address"
+          name="address"
           id="address"
           rows="16"
           placeholder="Address"
         ></textarea>
-        <button type="submit">Add Product</button>
+        <button type="submit">Add User</button>
       </form>
     </div>
   );
