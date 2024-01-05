@@ -4,7 +4,7 @@ const AddProduct = () => {
   return (
     <div className={styles.container}>
       <form className={styles.form}>
-        <input type="text" placeholder="Title" name="Title" required />
+        <input type="text" placeholder="Title" name="title" required />
         <select name="category" id="category">
           <option value="general">Choose a category</option>
           <option value="laptop">Laptop</option>
@@ -13,12 +13,12 @@ const AddProduct = () => {
           <option value="tablet">Tablet</option>
           <option value="case">Case</option>
         </select>
-        <input type="number" placeholder="Price" name="Price" />
-        <input type="number" placeholder="Stock" name="Stock" />
-        <input type="text" placeholder="Color" name="Color" />
-        <input type="text" placeholder="Size" name="Size" />
+        <input type="number" placeholder="Price" name="price" />
+        <input type="number" placeholder="Stock" name="stock" />
+        <input type="text" placeholder="Color" name="color" />
+        <input type="text" placeholder="Size" name="size" />
         <textarea
-          name="Description"
+          name="description"
           id="description"
           rows="16"
           placeholder="Description"
