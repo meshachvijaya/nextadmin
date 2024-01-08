@@ -108,6 +108,37 @@ export const addProduct = async (formData) => {
   redirect("/dashboard/products");
 };
 
+export const updateProduct = async (formData) => {
+  const { id, title, description, price, stock, color, size } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    const updateFields = {
+      title,
+      description,
+      price,
+      stock,
+      color,
+      size,
+    };
+
+    Object.keys(updateFields).forEach(
+      (key) =>
+        (updateFields[key] === "" || undefined) && delete updateFields[key]
+    );
+
+    await Product.findByIdAndUpdate(id, updateFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update product!");
+  }
+
+  revalidatePath("/dashboard/products");
+  redirect("/dashboard/products");
+};
+
 export const deleteProduct = async (formData) => {
   const { id } = Object.fromEntries(formData);
 

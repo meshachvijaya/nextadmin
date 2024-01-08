@@ -1,27 +1,41 @@
+import { updateProduct } from "@/app/lib/actions";
+import { fetchProduct } from "@/app/lib/data";
 import styles from "@/app/ui/dashboard/products/singleProduct/singleProduct.module.css";
 import Image from "next/image";
 
-const SingleProductPage = () => {
+const SingleProductPage = async ({ params }) => {
+  const { id } = params;
+  const product = await fetchProduct(id);
+
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.imgContainer}>
           <Image src="/noavatar.png" alt="" fill />
         </div>
-        iPhone
+        {product.title}
       </div>
       <div className={styles.formContainer}>
-        <form action="" className={styles.form}>
+        <form action={updateProduct} className={styles.form}>
+          <input type="hidden" name="id" value={product.id} />
           <label>Title</label>
-          <input type="text" name="title" placeholder="iPhone" />
+          <input type="text" name="title" placeholder={product.title} />
           <label>Price</label>
-          <input type="number" name="price" placeholder="200000" />
+          <input type="number" name="price" placeholder={product.price} />
           <label>Stock</label>
-          <input type="number" name="stock" />
+          <input type="number" name={product.stock} />
           <label>Color</label>
-          <input type="text" name="color" placeholder="White" />
+          <input
+            type="text"
+            name="color"
+            placeholder={product.color || "Color"}
+          />
           <label>Size</label>
-          <textarea type="text" name="size" placeholder="Medium" />
+          <textarea
+            type="text"
+            name="size"
+            placeholder={product.size || "Size"}
+          />
           <label>Category</label>
           <select name="category" id="category">
             <option value="electronics">Electronics</option>
@@ -32,10 +46,8 @@ const SingleProductPage = () => {
             name="description"
             id="description"
             rows="10"
-            placeholder="Description of Product"
-          >
-            {" "}
-          </textarea>
+            placeholder={product.description}
+          ></textarea>
           <button>Update</button>
         </form>
       </div>
