@@ -154,13 +154,16 @@ export const deleteProduct = async (formData) => {
   revalidatePath("/dashboard/products");
 };
 
-export const authenticate = async (formData) => {
+// prevState parameter only enable when using FormActionState
+
+export const authenticate = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData);
 
   try {
     await signIn("credentials", { username, password });
   } catch (err) {
     console.log(err);
-    throw err;
+    return "Wrong Credentials!";
+    // return { error: "Wrong Credentials!" };
   }
 };
